@@ -40,12 +40,17 @@ public class Validator {
         }
     }
 	
-    public void MovementTypeValidate(Movement movement, String name) throws Exception {
-        Integer code = movement.getType().getCode();
-        if (movement == null) {
-            throw new Exception(name + " can´t be null");
-        } else if(code<0 || code>5){
-            throw new Exception(movement + "it's not a valid type.");
+    public void movementTypeValidate(Integer movementType, String name) throws Exception {
+        if (movementType == null || movementType < 0) {
+            throw new Exception(name + " can´t be negative or an empty value.");
+        } else if(movementType>5){
+            throw new Exception(movementType + " it's not a valid type.");
+        }
+    }
+    
+    public void passValidate(String pass, String name) throws Exception {
+        if(pass == null || pass.isEmpty() || pass == "" || pass.length() < 8){
+            throw new Exception(name + " can´t be an empty value and must have at least 8 characters.");
         }
     }
 }
