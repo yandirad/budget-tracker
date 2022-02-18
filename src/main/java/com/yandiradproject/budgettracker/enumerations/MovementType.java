@@ -7,7 +7,7 @@ package com.yandiradproject.budgettracker.enumerations;
  */
 public enum MovementType {
     FIXED_EXPENSE(0, "Fixed Expense"), VARIABLE_EXPENSE(1, "Variable Expense"), 
-    REGULAR_INCOME(3, "Regular Income"), IRREGULAR_INCOME(4, "Irregular Income"), SAVING(5, "Saving");
+    REGULAR_INCOME(2, "Regular Income"), IRREGULAR_INCOME(3, "Irregular Income"), SAVING(4, "Saving");
     
     private String value;
     private Integer code;

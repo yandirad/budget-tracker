@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -36,12 +37,15 @@ public class Movement implements Serializable {
     private MovementType type;
     @Column
     private Double amount;
+    
+    @Column
+    @ManyToOne
+    private User userName;
 
     public Movement() {
     }
     
-    public Movement(String id, String name, Date createdAt, MovementType type, Double amount) {
-        this.id = id;
+    public Movement(String name, Date createdAt, MovementType type, Double amount) {
         this.name = name;
         this.createdAt = createdAt;
         this.type = type;
