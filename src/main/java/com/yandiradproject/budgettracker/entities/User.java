@@ -23,6 +23,8 @@ public class User implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+    
+    @Column(unique = true)
     private String name;
     
     @Column
@@ -35,16 +37,23 @@ public class User implements Serializable {
     @OneToMany
     @Column
     private List<Movement> movements;
+    
+    @Column
+    private Boolean active;
+    
+    @Column
+    private String grants = "USER";
 
     public User() {
     }
 
-    public User(String id, String name, String pass, Date createdAt, List<Movement> movements) {
+    public User(String id, String name, String pass, Date createdAt, List<Movement> movements, Boolean active) {
         this.id = id;
         this.name = name;
         this.pass = pass;
         this.createdAt = createdAt;
         this.movements = movements;
+        this.active = active;
     }
 
     public String getId() {
@@ -87,4 +96,20 @@ public class User implements Serializable {
         this.movements = movements;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getGrants() {
+        return grants;
+    }
+
+    public void setGrants(String grants) {
+        this.grants = grants;
+    }
+        
 }
